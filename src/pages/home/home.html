@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color = "danger">
+    <ion-title>
+      Ionic Reddit
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed="">Category</ion-label>
+      <ion-select (ionChange) = "changeCategory()" [(ngModel)] = "category" name = "category">
+        <ion-option value = "sports">Sports</ion-option>
+        <ion-option value = "food">Food</ion-option>
+        <ion-option value = "funny">Funny</ion-option>
+        <ion-option value = "gaming">Gaming</ion-option>
+        <ion-option value = "art">Art</ion-option>
+        <ion-option value = "aww">Pets</ion-option>
+        <ion-option value = "futurology">Futurology</ion-option>
+        <ion-option value = "space">Space</ion-option>
+        <ion-option value = "movies">Movies</ion-option>
+        <ion-option value = "science">Science</ion-option>
+        <ion-option value = "gadgets">Gadgets</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-item *ngFor="let item of items">
+      <h2 (click)="showItemData(item.data)">{{item.data.title}}</h2>
+      <ion-thumbnail *ngIf="item.data.thumbnail" item-left (click)="showItemData(item.data)">
+        <img src="{{item.data.thumbnail}}">
+      </ion-thumbnail>
+      <ion-icon name = "thumbs-up"> {{item.data.score}}</ion-icon>&nbsp;&nbsp;
+      <ion-icon name = "chatboxes"> {{item.data.num_comments}}</ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
